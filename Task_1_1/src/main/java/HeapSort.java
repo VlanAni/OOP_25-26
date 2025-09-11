@@ -8,8 +8,7 @@ public class HeapSort {
      *
      * @param array - user's array.
      */
-    public static void sortArr(int[] array)
-    {
+    public static void sortArr(int[] array) {
         Heap heap = new Heap();
         heap.sort(array);
     }
@@ -34,12 +33,11 @@ class Heap {
      */
     private void addNode(int number) {
         this.nodes[size] = number;
-        int curr_idx = size;
+        int curridx = size;
         this.size++;
-        while (curr_idx > 0 & nodes[curr_idx] < nodes[(curr_idx - 1) / 2])
-        {
-            swapInHeap(curr_idx, (curr_idx - 1) / 2);
-            curr_idx = (curr_idx - 1) / 2;
+        while (curridx > 0 & nodes[curridx] < nodes[(curridx - 1) / 2]) {
+            swapInHeap(curridx, (curridx - 1) / 2);
+            curridx = (curridx - 1) / 2;
         }
     }
 
@@ -66,26 +64,29 @@ class Heap {
      * @return - minimal value in the heap.
      */
     private int extractMin() {
-        int min_value = this.nodes[0];
+        int minvalue = this.nodes[0];
         swapInHeap(0, this.size - 1);
         this.size--;
-        int child_to_swap = 0, curr_idx = 0, lc_idx, rc_idx;
-        while (curr_idx * 2 + 1 < this.size) {
-            lc_idx = curr_idx * 2 + 1;
-            rc_idx = curr_idx * 2 + 2;
-            if (this.nodes[lc_idx] < this.nodes[curr_idx]){
-                child_to_swap = lc_idx;
+        int childtoswap = 0;
+        int curridx = 0;
+        int lcidx;
+        int rcidx;
+        while (curridx * 2 + 1 < this.size) {
+            lcidx = curridx * 2 + 1;
+            rcidx = curridx * 2 + 2;
+            if (this.nodes[lcidx] < this.nodes[curridx]){
+                childtoswap = lcidx;
             }
-            if (rc_idx < size & nodes[rc_idx] < nodes[curr_idx] & nodes[lc_idx] > nodes[rc_idx]){
-                child_to_swap = rc_idx;
+            if (rcidx < size & nodes[rcidx] < nodes[curridx] & nodes[lcidx] > nodes[rcidx]){
+                childtoswap = rcidx;
             }
-            if (curr_idx == child_to_swap){
+            if (curridx == childtoswap){
                 break;
             }
-            swapInHeap(curr_idx, child_to_swap);
-            curr_idx = child_to_swap;
+            swapInHeap(curridx, childtoswap);
+            curridx = childtoswap;
         }
-        return min_value;
+        return minvalue;
     }
 
     /**
@@ -95,11 +96,11 @@ class Heap {
      *
      * @param array - array to sort.
      *
-     * @param arr_size - given array's size.
+     * @param arrsize - given array's size.
      */
-    private void buildHeap(int[] array, int arr_size) {
-        this.nodes = new int[arr_size];
-        for (int i = 0; i < arr_size; i++) {
+    private void buildHeap(int[] array, int arrsize) {
+        this.nodes = new int[arrsize];
+        for (int i = 0; i < arrsize; i++) {
             this.addNode(array[i]);
         }
     }
@@ -113,11 +114,12 @@ class Heap {
      * @param array - array to sort.
      */
     public void sort(int[] array) {
-        int arr_size = array.length, min_val;
-        this.buildHeap(array, arr_size);
-        for (int i = 0; i < arr_size; i++) {
-            min_val = this.extractMin();
-            array[i] = min_val;
+        int arrsize = array.length;
+        int minval;
+        this.buildHeap(array, arrsize);
+        for (int i = 0; i < arrsize; i++) {
+            minval = this.extractMin();
+            array[i] = minval;
         }
     }
 }
