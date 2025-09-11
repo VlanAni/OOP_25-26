@@ -74,13 +74,13 @@ class Heap {
         while (curridx * 2 + 1 < this.size) {
             lcidx = curridx * 2 + 1;
             rcidx = curridx * 2 + 2;
-            if (this.nodes[lcidx] < this.nodes[curridx]){
+            if (this.nodes[lcidx] < this.nodes[curridx]) {
                 childtoswap = lcidx;
             }
-            if (rcidx < size & nodes[rcidx] < nodes[curridx] & nodes[lcidx] > nodes[rcidx]){
+            if (rcidx < size & nodes[rcidx] < nodes[curridx] & nodes[lcidx] > nodes[rcidx]) {
                 childtoswap = rcidx;
             }
-            if (curridx == childtoswap){
+            if (curridx == childtoswap) {
                 break;
             }
             swapInHeap(curridx, childtoswap);

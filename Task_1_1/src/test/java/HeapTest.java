@@ -1,6 +1,6 @@
-import org.junit.jupiter.api.Test;
-
 import java.util.Arrays;
+
+import org.junit.jupiter.api.Test;
 
 /**
  * Testing heap.
@@ -19,7 +19,7 @@ public class HeapTest {
         this.arraytosort = new int[0];
         HeapSort.sortArr(this.arraytosort);
 
-        assert(this.arraytosort.length == 0);
+        assert (this.arraytosort.length == 0);
     }
 
     /**
@@ -31,7 +31,7 @@ public class HeapTest {
         this.arrayforcheck = new int[] {-10, -7, -6, -5, -1, 0, 1, 2, 3, 4, 5, 10, 55, 70, 100};
         HeapSort.sortArr(this.arraytosort);
 
-        assert(Arrays.equals(this.arraytosort, this.arrayforcheck));
+        assert (Arrays.equals(this.arraytosort, this.arrayforcheck));
     }
 
     /**
@@ -43,7 +43,7 @@ public class HeapTest {
         this.arrayforcheck = new int[] {1};
         HeapSort.sortArr(this.arraytosort);
 
-        assert(Arrays.equals(this.arraytosort, this.arrayforcheck));
+        assert (Arrays.equals(this.arraytosort, this.arrayforcheck));
     }
 
     /**
@@ -55,7 +55,7 @@ public class HeapTest {
         this.arrayforcheck = new int[] {-1, 0, 0, 0, 0, 0};
         HeapSort.sortArr(this.arraytosort);
 
-        assert(Arrays.equals(this.arraytosort, this.arrayforcheck));
+        assert (Arrays.equals(this.arraytosort, this.arrayforcheck));
     }
 
     /**
@@ -67,7 +67,7 @@ public class HeapTest {
         this.arrayforcheck = new int[] {1, 2, 3, 4, 5, 6};
         HeapSort.sortArr(this.arraytosort);
 
-        assert(Arrays.equals(this.arraytosort, this.arrayforcheck));
+        assert (Arrays.equals(this.arraytosort, this.arrayforcheck));
     }
 
     @Test
@@ -76,7 +76,7 @@ public class HeapTest {
         this.arrayforcheck = new int[] {1, 2, 3, 4, 5, 6};
         HeapSort.sortArr(this.arraytosort);
 
-        assert(Arrays.equals(this.arraytosort, this.arrayforcheck));
+        assert (Arrays.equals(this.arraytosort, this.arrayforcheck));
     }
 
     @Test
@@ -85,7 +85,7 @@ public class HeapTest {
         this.arrayforcheck = new int[] {1, 2, 3, 4, 5, 6};
         HeapSort.sortArr(this.arraytosort);
 
-        assert(Arrays.equals(this.arraytosort, this.arrayforcheck));
+        assert (Arrays.equals(this.arraytosort, this.arrayforcheck));
     }
 
     @Test
@@ -94,7 +94,7 @@ public class HeapTest {
         this.arrayforcheck = new int[] {1, 2, 3, 4, 5, 6};
         HeapSort.sortArr(this.arraytosort);
 
-        assert(Arrays.equals(this.arraytosort, this.arrayforcheck));
+        assert (Arrays.equals(this.arraytosort, this.arrayforcheck));
     }
 
     @Test
@@ -103,7 +103,7 @@ public class HeapTest {
         this.arrayforcheck = new int[] {0, 0, 0};
         HeapSort.sortArr(this.arraytosort);
 
-        assert(Arrays.equals(this.arraytosort, this.arrayforcheck));
+        assert (Arrays.equals(this.arraytosort, this.arrayforcheck));
     }
 
     @Test
@@ -112,6 +112,6 @@ public class HeapTest {
         this.arrayforcheck = new int[] {-192039059, -3, 160249};
         HeapSort.sortArr(this.arraytosort);
 
-        assert(Arrays.equals(this.arraytosort, this.arrayforcheck));
+        assert (Arrays.equals(this.arraytosort, this.arrayforcheck));
     }
 }
