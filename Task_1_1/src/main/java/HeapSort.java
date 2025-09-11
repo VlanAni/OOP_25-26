@@ -1,13 +1,12 @@
 /**
- * Класс, предоставляющий возможность произвести <b>HeapSort</b> над массивом с помощью метода <code>sortArr</code>
- * @author Анисимов Владимир 24214
+ * Class that sort array using Heap-object.
 */
-class HeapSort
-{
+public class HeapSort {
     /**
-     * Статический метод, создающий объект класса куча (Heap), и обращается к его методу сортировки
-     * Временная сложность сортировки кучей - O(N*log(N))
-     * @param array - массив, который передаёт пользователь
+     * Static method that creates Heap-object and call <code>sort</code>.
+     * Time complexity - O(N*log(N)).
+     *
+     * @param array - user's array.
      */
     public static void sortArr(int[] array)
     {
@@ -17,25 +16,23 @@ class HeapSort
 }
 
 /**
- * Класс, реализующий структуру данных "двоичная куча"
- * Инвариант кучи - отец меньше своих двух сыновей
- * @author Анисимов Владимир 24214
+ * Implementing <code>heap</code> data structure.
+ * Main condition - parent is greater than its children.
  */
-class Heap
-{
-    /**nodes - массив, хранящий кучу в следующем виде: индекс отца = i, индекс детей = 2 * i + 1; 2 * i + 2*/
+class Heap {
+    /**nodes - array, that stores the tree.*/
     int[] nodes;
-    /**size - параметр, хранящий количество элементов в куче*/
+    /**size - nodes' size.*/
     int size;
 
     /**
-     * <code>addNode</code> - метод, добавляющий ноду в дерево и восстанавливающий инвариант
-     * Если добавленная нода <b>меньше своего отца</b>, то поднимаем её вверх
-     * Временная сложность операции - O(log(N))
-     * @param number - добавляемое число
+     * <code>addNode</code> - adding node to the tree.
+     * If added node is smaller that it's parent, then go up.
+     * Time complexity - O(log(N)).
+     *
+     * @param number - number to add.
      */
-    private void addNode(int number)
-    {
+    private void addNode(int number) {
         this.nodes[size] = number;
         int curr_idx = size;
         this.size++;
@@ -47,39 +44,39 @@ class Heap
     }
 
     /**
-     * Метод, позволяющий нодам обменяться значениями
-     * Временная сложность - O(1)
-     * @param idx1 - индекс первой ноды
-     * @param idx2 - индекс второй ноды
+     * Swapping values of given nodes.
+     * Time complexity - O(1).
+     *
+     * @param idx1 - first node's index.
+     *
+     * @param idx2 - second node's index.
      */
-    public void swapInHeap(int idx1, int idx2)
-    {
+    public void swapInHeap(int idx1, int idx2) {
         int t = this.nodes[idx1];
         this.nodes[idx1] = this.nodes[idx2];
         this.nodes[idx2] = t;
     }
 
     /**
-     * Метод, извлекающий минимальное значение из кучи (<b>корень бинарного дерева</b>)
-     * Метод меняет местами самую последнюю ноду и корень, удаляет ноду с минимумом и восстанавливает инвариант
-     * Инвариант восстанавливается перемещением нового корня вниз, меняя его местами с минимальным сыном
-     * Таким образом, сложность операции - O(log(N))
-     * @return - минимальное значение в куче
+     * Extracting minimal value from heap.
+     * It swaps the root and last node and then goals the main condition.
+     * To goal the main condition, it swaps the node and minimal child.
+     * Time complexity - O(log(N)).
+     *
+     * @return - minimal value in the heap.
      */
-    private int extractMin()
-    {
+    private int extractMin() {
         int min_value = this.nodes[0];
         swapInHeap(0, this.size - 1);
         this.size--;
         int child_to_swap = 0, curr_idx = 0, lc_idx, rc_idx;
-        while (curr_idx * 2 + 1 < this.size)
-        {
+        while (curr_idx * 2 + 1 < this.size) {
             lc_idx = curr_idx * 2 + 1;
             rc_idx = curr_idx * 2 + 2;
             if (this.nodes[lc_idx] < this.nodes[curr_idx]){
                 child_to_swap = lc_idx;
             }
-            if (rc_idx < this.size & this.nodes[rc_idx] < nodes[curr_idx] & this.nodes[lc_idx] > this.nodes[rc_idx]){
+            if (rc_idx < size & nodes[rc_idx] < nodes[curr_idx] & nodes[lc_idx] > nodes[rc_idx]){
                 child_to_swap = rc_idx;
             }
             if (curr_idx == child_to_swap){
@@ -92,34 +89,33 @@ class Heap
     }
 
     /**
-     * Метод, который по входному массиву и его размеру создаёт бинарное дерево
-     * На каждой итерации цикла берётся i-ый элемент из массива и добавляется в кучу с помощью {@link Heap#addNode}
-     * Сложность работы метода: O(n * log(n)), так как на каждой итерации добавляется нода в дерево
-     * @param array - массив, из которого строится куча
-     * @param arr_size - размер массива
+     * Creating a binary tree.
+     * It reads i-th element from given array and uses {@link Heap#addNode}.
+     * Time complexity: O(N * log(N)).
+     *
+     * @param array - array to sort.
+     *
+     * @param arr_size - given array's size.
      */
-    private void buildHeap(int[] array, int arr_size)
-    {
+    private void buildHeap(int[] array, int arr_size) {
         this.nodes = new int[arr_size];
-        for (int i = 0; i < arr_size; i++)
-        {
+        for (int i = 0; i < arr_size; i++) {
             this.addNode(array[i]);
         }
     }
 
     /**
-     * Метод, осуществляющий сортровку массива
-     * 1 шаг - построение кучи из исходного массива
-     * 2 шаг - на каждой итерации мы извлекаем минимум из кучи и перезаписываем i-ый элемент в массиве
-     * Сложность операции: O(n * log(n) + n * log (n)) = O(2 * n * log(n)) = O(n * log(n))
-     * @param array - массив, который необходимо отсортировать
+     * Sorting given array.
+     * First step - creating a heap.
+     * Second step - on each iteration it extracts min and rewrite array[i].
+     * Time complexity:  O(2 * n * log(n)) = O(n * log(n)).
+     *
+     * @param array - array to sort.
      */
-    public void sort(int[] array)
-    {
+    public void sort(int[] array) {
         int arr_size = array.length, min_val;
         this.buildHeap(array, arr_size);
-        for (int i = 0; i < arr_size; i++)
-        {
+        for (int i = 0; i < arr_size; i++) {
             min_val = this.extractMin();
             array[i] = min_val;
         }
