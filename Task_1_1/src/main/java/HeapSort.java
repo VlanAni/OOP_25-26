@@ -6,7 +6,7 @@ public class HeapSort {
     private HeapSort() {
     }
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
         System.out.println("Has been run successfully!");
     }
 
@@ -18,7 +18,7 @@ public class HeapSort {
      * @param array - user's array.
      */
     static void sortArr(int[] array) {
-        if (array == null){
+        if (array == null) {
             return;
         }
         Heap heap = new Heap();

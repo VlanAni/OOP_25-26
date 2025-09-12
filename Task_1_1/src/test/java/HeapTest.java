@@ -2,6 +2,9 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * Heap testing.
+ */
 public class HeapTest {
     int[] arraytosort;
     int[] arrayforcheck;
