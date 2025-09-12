@@ -2,18 +2,10 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
-/**
- * Testing heap.
- */
 public class HeapTest {
-    /**Array to sort.*/
     int[] arraytosort;
-    /**Right answer.*/
     int[] arrayforcheck;
 
-    /**
-     * Testing with the empty array.
-     */
     @Test
     void testEmpty() {
         this.arraytosort = new int[0];
@@ -22,9 +14,6 @@ public class HeapTest {
         assert (this.arraytosort.length == 0);
     }
 
-    /**
-     * Testing the worst case.
-     */
     @Test
     void worstCase() {
         this.arraytosort = new int[] {100, 70, 55, 10, 5, 4, 3, 2, 1, 0, -1, -5, -6, -7, -10};
@@ -34,9 +23,6 @@ public class HeapTest {
         assert (Arrays.equals(this.arraytosort, this.arrayforcheck));
     }
 
-    /**
-     * Testing one-element array.
-     */
     @Test
     void oneNumber() {
         this.arraytosort = new int[] {1};
@@ -46,9 +32,6 @@ public class HeapTest {
         assert (Arrays.equals(this.arraytosort, this.arrayforcheck));
     }
 
-    /**
-     * Testing with unique value.
-     */
     @Test
     void twoNumbers() {
         this.arraytosort = new int[] {0, 0, 0, 0, 0, -1};
@@ -58,9 +41,6 @@ public class HeapTest {
         assert (Arrays.equals(this.arraytosort, this.arrayforcheck));
     }
 
-    /**
-     * Testing with sorted array.
-     */
     @Test
     void sortedCase() {
         this.arraytosort = new int[] {1, 2, 3, 4, 5, 6};
@@ -113,5 +93,13 @@ public class HeapTest {
         HeapSort.sortArr(this.arraytosort);
 
         assert (Arrays.equals(this.arraytosort, this.arrayforcheck));
+    }
+
+    @Test
+    void null_case() {
+        this.arraytosort = null;
+        HeapSort.sortArr(this.arraytosort);
+
+        assert (this.arraytosort == null);
     }
 }
