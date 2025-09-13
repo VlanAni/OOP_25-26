@@ -105,4 +105,9 @@ public class HeapTest {
 
         assert (this.arraytosort == null);
     }
+
+    @Test
+    void main_test() {
+        Main.main(new String[0]);
+    }
 }
