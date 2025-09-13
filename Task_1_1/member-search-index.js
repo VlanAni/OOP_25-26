@@ -1,1 +1,1 @@
-memberSearchIndex = [{"p":"<Unnamed>","c":"HeapSort","l":"main(String[])","u":"main(java.lang.String[])"}];updateSearchResults();
+memberSearchIndex = [];updateSearchResults();
